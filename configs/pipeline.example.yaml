@@ -1,0 +1,46 @@
+# pipeline.yaml 示例 —— 通用阶段模板
+# base: 项目根（数据、脚本、results 都相对它）
+# execution: local（默认）| ssh（远程服务器执行，见 docs/server-setup.md）
+base: /data/omics/myproject
+python: /opt/mambaforge/envs/omics/bin/python
+execution: local
+
+# 远程执行时使用（execution: ssh 才需要）
+# remote:
+#   host: sxycloud-x2          # 建议 ~/.ssh/config 里配别名
+#   user: dsh
+#   port: 22
+#   workdir: /data/omics/myproject
+#   python: /opt/mambaforge/envs/omics/bin/python
+
+# 阶段脚本的环境变量（传给 runner）
+env:
+  PYTHONIOENCODING: utf-8
+
+stages:
+  - id: download
+    desc: 下载数据
+    agent: omics
+    tools: ["scripts/01_download.py"]        # 相对 base
+    expect: [data/raw]                        # 期望产物（相对 base）
+    qc: {min_files_in: {data/raw: 5}}         # 最少文件数
+    pull: [data/raw]                          # ssh 执行时拉回本地的路径
+
+  - id: deg
+    desc: 差异表达分析
+    agent: omics
+    tools: ["scripts/02_deg.R"]
+    expect: [results/deg_all.csv]
+    contract:                                 # 产物契约：缺列即失败
+      results/deg_all.csv: {columns: [gene, log2FC, padj]}
+    qc: {min_rows: {results/deg_all.csv: 500}}
+    timeout: 7200                             # 长任务单独放宽
+
+  - id: novelty
+    desc: PubMed 创新性评分（内置 agent，无 tools）
+    agent: novelty
+    expect: [results/novelty_scores.csv]
+    params:
+      genes_from: results/candidates.csv
+      gene_column: gene
+      out: results/novelty_scores.csv

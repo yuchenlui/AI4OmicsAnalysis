@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 830" width="100%" role="img" aria-label="YAP1 resistance screening agent harness architecture">
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#9CA3AF" stroke-width="1.6" stroke-linecap="round"/></marker></defs>
+<rect width="1440" height="830" fill="#FFFFFF"/>
+<text x="40" y="62" font-family="Arial, Helvetica, sans-serif" font-size="30" fill="#111827" font-weight="600" text-anchor="start">YAP1 耐药候选筛选 · Agent Harness</text>
+<text x="40" y="94" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#6B7280" font-weight="400" text-anchor="start">确定性流水线 + 监督门控 + 可选 LLM 判读 ｜ harness/run.py · pipeline.yaml · agents.py · supervisor.py</text>
+<rect x="40" y="140" width="200" height="82" rx="12" fill="#F3F4F6" stroke="#D1D5DB" stroke-width="1.5"/>
+<text x="140" y="172" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#111827" font-weight="600" text-anchor="middle">研究问题</text>
+<text x="140" y="196" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#6B7280" font-weight="400" text-anchor="middle">耐药候选基因</text>
+<path d="M240 181 L300 181" fill="none" stroke="#D1D5DB" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="300" y="128" width="620" height="106" rx="14" fill="#FCEBEB" stroke="#A32D2D" stroke-width="1.5"/>
+<text x="610" y="164" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#7F1D1D" font-weight="600" text-anchor="middle">Supervisor（监督）</text>
+<text x="610" y="192" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#7F1D1D" font-weight="400" text-anchor="middle">按 pipeline.yaml 调度 · 每阶段 QC 门控 · 失败分类重试 · 状态清单落盘</text>
+<text x="610" y="216" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#9B4A4A" font-weight="400" text-anchor="middle">harness/state.json 记录输入/脚本/产物哈希，未变则跳过</text>
+<path d="M920 181 L980 181" fill="none" stroke="#D1D5DB" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="980" y="140" width="420" height="82" rx="12" fill="#F3F4F6" stroke="#D1D5DB" stroke-width="1.5"/>
+<text x="1190" y="172" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#111827" font-weight="600" text-anchor="middle">交付物</text>
+<text x="1190" y="196" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#6B7280" font-weight="400" text-anchor="middle">候选基因表 · 创新性评分 · 复合图 · 报告</text>
+<path d="M610 234 L610 262" fill="none" stroke="#9CA3AF" stroke-width="1.5"/>
+<path d="M140 262 L1300 262" fill="none" stroke="#9CA3AF" stroke-width="1.5"/>
+<path d="M140 262 L140 292" fill="none" stroke="#D1D5DB" stroke-width="1.5" marker-end="url(#a)"/>
+<path d="M372 262 L372 292" fill="none" stroke="#D1D5DB" stroke-width="1.5" marker-end="url(#a)"/>
+<path d="M604 262 L604 292" fill="none" stroke="#D1D5DB" stroke-width="1.5" marker-end="url(#a)"/>
+<path d="M836 262 L836 292" fill="none" stroke="#D1D5DB" stroke-width="1.5" marker-end="url(#a)"/>
+<path d="M1068 262 L1068 292" fill="none" stroke="#D1D5DB" stroke-width="1.5" marker-end="url(#a)"/>
+<path d="M1300 262 L1300 292" fill="none" stroke="#D1D5DB" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="30" y="292" width="220" height="104" rx="12" fill="#FCEBEB" stroke="#A32D2D" stroke-width="1.5"/>
+<text x="44" y="322" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#A32D2D" font-weight="600" text-anchor="start">Supervisor</text>
+<text x="44" y="344" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#A32D2D" font-weight="400" text-anchor="start">监督与调度</text>
+<text x="44" y="366" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#374151" font-weight="400" text-anchor="start">阶段调度 · QC 门控</text>
+<text x="44" y="384" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#374151" font-weight="400" text-anchor="start">失败分类重试 · 状态清单</text>
+<rect x="262" y="292" width="220" height="104" rx="12" fill="#E6F1FB" stroke="#185FA5" stroke-width="1.5"/>
+<text x="276" y="322" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#185FA5" font-weight="600" text-anchor="start">Omics Agent</text>
+<text x="276" y="344" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#185FA5" font-weight="400" text-anchor="start">组学数据</text>
+<text x="276" y="366" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#374151" font-weight="400" text-anchor="start">GEO/PRIDE 下载</text>
+<text x="276" y="384" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#374151" font-weight="400" text-anchor="start">DEG · IP-MS · ChIP</text>
+<rect x="494" y="292" width="220" height="104" rx="12" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1.5"/>
+<text x="508" y="322" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#0F6E56" font-weight="600" text-anchor="start">Database Query</text>
+<text x="508" y="344" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#0F6E56" font-weight="400" text-anchor="start">数据库检索</text>
+<text x="508" y="366" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#374151" font-weight="400" text-anchor="start">GEO 数据集检索</text>
+<text x="508" y="384" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#374151" font-weight="400" text-anchor="start">数据集 → PMID</text>
+<rect x="726" y="292" width="220" height="104" rx="12" fill="#EAF3DE" stroke="#3B6D11" stroke-width="1.5"/>
+<text x="740" y="322" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#3B6D11" font-weight="600" text-anchor="start">Novelty Agent</text>
+<text x="740" y="344" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#3B6D11" font-weight="400" text-anchor="start">创新性评分</text>
+<text x="740" y="366" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#374151" font-weight="400" text-anchor="start">PubMed 文献计数</text>
+<text x="740" y="384" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#374151" font-weight="400" text-anchor="start">新颖性 / 功能相关性</text>
+<rect x="958" y="292" width="220" height="104" rx="12" fill="#FAEEDA" stroke="#854F0B" stroke-width="1.5"/>
+<text x="972" y="322" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#854F0B" font-weight="600" text-anchor="start">Plot Agent</text>
+<text x="972" y="344" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#854F0B" font-weight="400" text-anchor="start">出图</text>
+<text x="972" y="366" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#374151" font-weight="400" text-anchor="start">按绘图提示词</text>
+<text x="972" y="384" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#374151" font-weight="400" text-anchor="start">花瓣图 · 四象限 · 峰图</text>
+<rect x="1190" y="292" width="220" height="104" rx="12" fill="#EEEDFE" stroke="#534AB7" stroke-width="1.5"/>
+<text x="1204" y="322" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#534AB7" font-weight="600" text-anchor="start">Control Agent</text>
+<text x="1204" y="344" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#534AB7" font-weight="400" text-anchor="start">负对照</text>
+<text x="1204" y="366" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#374151" font-weight="400" text-anchor="start">置换检验</text>
+<text x="1204" y="384" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#374151" font-weight="400" text-anchor="start">多体系一致上调经验 p</text>
+<text x="40" y="442" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#111827" font-weight="600" text-anchor="start">流水线（pipeline.yaml）</text>
+<text x="280" y="442" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#6B7280" font-weight="400" text-anchor="start">9 阶段 · 每阶段校验：产物存在 → 契约列名 → 行数区间 → 哈希落盘</text>
+<rect x="40" y="458" width="136" height="62" rx="10" fill="#F9FAFB" stroke="#D1D5DB" stroke-width="1.5"/>
+<text x="108.0" y="484" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#111827" font-weight="600" text-anchor="middle">检索</text>
+<text x="108.0" y="504" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6B7280" font-weight="400" text-anchor="middle">geo_search</text>
+<path d="M177 489 L187 489" fill="none" stroke="#9CA3AF" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="188" y="458" width="136" height="62" rx="10" fill="#F9FAFB" stroke="#D1D5DB" stroke-width="1.5"/>
+<text x="256.0" y="484" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#111827" font-weight="600" text-anchor="middle">下载</text>
+<text x="256.0" y="504" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6B7280" font-weight="400" text-anchor="middle">download</text>
+<path d="M325 489 L335 489" fill="none" stroke="#9CA3AF" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="336" y="458" width="136" height="62" rx="10" fill="#EFF6FF" stroke="#D1D5DB" stroke-width="1.5"/>
+<text x="404.0" y="484" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#111827" font-weight="600" text-anchor="middle">互作</text>
+<text x="404.0" y="504" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6B7280" font-weight="400" text-anchor="middle">ipms</text>
+<path d="M473 489 L483 489" fill="none" stroke="#9CA3AF" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="484" y="458" width="136" height="62" rx="10" fill="#EFF6FF" stroke="#D1D5DB" stroke-width="1.5"/>
+<text x="552.0" y="484" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#111827" font-weight="600" text-anchor="middle">DEG</text>
+<text x="552.0" y="504" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6B7280" font-weight="400" text-anchor="middle">deg</text>
+<path d="M621 489 L631 489" fill="none" stroke="#9CA3AF" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="632" y="458" width="136" height="62" rx="10" fill="#EFF6FF" stroke="#D1D5DB" stroke-width="1.5"/>
+<text x="700.0" y="484" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#111827" font-weight="600" text-anchor="middle">ChIP</text>
+<text x="700.0" y="504" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6B7280" font-weight="400" text-anchor="middle">chip</text>
+<path d="M769 489 L779 489" fill="none" stroke="#9CA3AF" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="780" y="458" width="136" height="62" rx="10" fill="#F9FAFB" stroke="#D1D5DB" stroke-width="1.5"/>
+<text x="848.0" y="484" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#111827" font-weight="600" text-anchor="middle">整合</text>
+<text x="848.0" y="504" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6B7280" font-weight="400" text-anchor="middle">integrate</text>
+<path d="M917 489 L927 489" fill="none" stroke="#9CA3AF" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="928" y="458" width="136" height="62" rx="10" fill="#F9FAFB" stroke="#D1D5DB" stroke-width="1.5"/>
+<text x="996.0" y="484" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#111827" font-weight="600" text-anchor="middle">负对照</text>
+<text x="996.0" y="504" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6B7280" font-weight="400" text-anchor="middle">negctrl</text>
+<path d="M1065 489 L1075 489" fill="none" stroke="#9CA3AF" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="1076" y="458" width="136" height="62" rx="10" fill="#F9FAFB" stroke="#D1D5DB" stroke-width="1.5"/>
+<text x="1144.0" y="484" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#111827" font-weight="600" text-anchor="middle">评分</text>
+<text x="1144.0" y="504" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6B7280" font-weight="400" text-anchor="middle">novelty</text>
+<path d="M1213 489 L1223 489" fill="none" stroke="#9CA3AF" stroke-width="1.5" marker-end="url(#a)"/>
+<rect x="1224" y="458" width="136" height="62" rx="10" fill="#F9FAFB" stroke="#D1D5DB" stroke-width="1.5"/>
+<text x="1292.0" y="484" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#111827" font-weight="600" text-anchor="middle">出图</text>
+<text x="1292.0" y="504" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#6B7280" font-weight="400" text-anchor="middle">plots</text>
+<rect x="40" y="556" width="660" height="176" rx="12" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1.5"/>
+<text x="60" y="586" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#111827" font-weight="600" text-anchor="start">失败恢复：按类别处理，不用「重试 3 次」一刀切</text>
+<text x="60" y="614" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#7F1D1D" font-weight="600" text-anchor="start">transient</text>
+<text x="150" y="614" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#6B7280" font-weight="400" text-anchor="start">网络/限流/SSL</text>
+<text x="330" y="614" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#374151" font-weight="400" text-anchor="start">退避 2→8→20s 重试 3 次</text>
+<text x="60" y="642" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#7F1D1D" font-weight="600" text-anchor="start">schema</text>
+<text x="150" y="642" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#6B7280" font-weight="400" text-anchor="start">缺文件/缺列/编码</text>
+<text x="330" y="642" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#374151" font-weight="400" text-anchor="start">重试 1 次，仍失败则换解析或换数据源</text>
+<text x="60" y="670" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#7F1D1D" font-weight="600" text-anchor="start">logic</text>
+<text x="150" y="670" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#6B7280" font-weight="400" text-anchor="start">QC 不达标/断言失败</text>
+<text x="330" y="670" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#374151" font-weight="400" text-anchor="start">不重试，记录并中止等人工判断</text>
+<text x="60" y="698" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#7F1D1D" font-weight="600" text-anchor="start">budget</text>
+<text x="150" y="698" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#6B7280" font-weight="400" text-anchor="start">超时/超预算</text>
+<text x="330" y="698" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#374151" font-weight="400" text-anchor="start">不重试，调阈值或缩小数据规模</text>
+<rect x="740" y="556" width="660" height="176" rx="12" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1.5"/>
+<text x="760" y="586" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#111827" font-weight="600" text-anchor="start">可审计与可证伪</text>
+<text x="760" y="616" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#374151" font-weight="400" text-anchor="start">· state.json：输入/脚本/产物三方哈希，重跑可判定</text>
+<text x="760" y="644" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#374151" font-weight="400" text-anchor="start">· 契约校验：产物缺列即失败，避免静默错数据</text>
+<text x="760" y="672" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#374151" font-weight="400" text-anchor="start">· 负对照：置换 5000 次 + 多体系一致上调经验 p</text>
+<text x="760" y="700" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#374151" font-weight="400" text-anchor="start">· critic（规划中）：逐条质询证据同源性</text>
+<text x="40" y="774" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#6B7280" font-weight="400" text-anchor="start">运行：python run.py ｜ --status 查看状态 ｜ --from integrate 续跑 ｜ --only novelty,negctrl ｜ --force 忽略哈希</text>
+<text x="40" y="800" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#6B7280" font-weight="400" text-anchor="start">LLM 可选：设 LLM_BASE_URL / LLM_API_KEY 启用语义判读；未配置则全程规则模式，结果可复现。</text>
+</svg>

@@ -1,0 +1,82 @@
+# YAP1 乳腺癌耐药候选筛选 —— ai4omics 完整示例
+# 项目数据较大（GEO/PRIDE 原始数据 ~GB 级），建议在服务器上跑：
+#   execution: ssh + remote 配置见 docs/server-setup.md
+base: F:/00YAP1/YAP1breast
+python: C:/Users/yuche/.workbuddy/binaries/python/versions/3.13.12/python.exe
+execution: local
+env:
+  PYTHONPATH: F:/record/opera/.workbuddy_envs/python_default/Lib/site-packages
+  PYTHONIOENCODING: utf-8
+
+stages:
+  - id: geo_search
+    desc: GEO 检索耐药数据集并采集元数据
+    agent: dbquery
+    tools: ["scripts/00_geo_search.py", "scripts/02_collect_meta.py"]
+    expect: [results/dataset_meta.tsv]
+    contract:
+      results/dataset_meta.tsv: {columns: [gse, drug, title]}
+
+  - id: download
+    desc: 下载 GEO 补充文件与 PRIDE 数据
+    agent: omics
+    tools: ["scripts/03_download.py", "scripts/11_pride_download.py"]
+    expect: [data/geo]
+    qc: {min_files_in: {data/geo: 20}}
+
+  - id: ipms
+    desc: IP-MS 质谱互作分析（PRIDE 项目 × IP vs ctrl）
+    agent: omics
+    tools: ["scripts/12_ipms_probe.py", "scripts/13_ipms_core.py", "scripts/14_ipms_refine.py"]
+    expect: [results/ipms_volcano_sorted.csv, results/ipms_consensus2.csv]
+    qc: {min_rows: {results/ipms_volcano_sorted.csv: 1000}}
+    contract:
+      results/ipms_volcano_sorted.csv: {columns: [gene, log2FC, padj, YAP1_ChIP_bound_and_resUP]}
+      results/ipms_consensus2.csv: {columns: [gene, dataset, n_support]}
+
+  - id: deg
+    desc: 各耐药数据集 DEG（阈值校准到 1000-3000）
+    agent: omics
+    tools: ["scripts/19_geo_extract3.py", "scripts/25_deg_intersect.py", "scripts/45_add_platinum_parp_to_priority.py"]
+    expect: [results/GSE288840_DEG_doxorubicin.csv, results/GSE297522_DEG_olaparib.csv]
+    qc: {deg_range: [1000, 3000]}
+    contract:
+      results/GSE288840_DEG_doxorubicin.csv: {columns: [gene, log2FC, padj]}
+
+  - id: chip
+    desc: YAP/TEAD4 ChIP-seq 峰注释与三重交集
+    agent: omics
+    tools: ["scripts/29_chipseq_yap_tead.py", "scripts/31_chip_yap_alone.py"]
+    expect: [results/chip_core_targets_up.csv, results/chip_yap_tead_x_resdeg.csv]
+
+  - id: integrate
+    desc: IP × 耐药 × ChIP 三重筛选 → 候选表
+    agent: omics
+    tools: ["scripts/34_priority_triple_screen.py", "scripts/36_chip_metrics_for_priority.py"]
+    expect: [results/priority_triple_candidates.csv]
+    qc: {row_range: {results/priority_triple_candidates.csv: [3, 30]}}
+    contract:
+      results/priority_triple_candidates.csv: {columns: [基因, IP互作log2FC, IP检出数据集]}
+
+  - id: negctrl
+    desc: 负对照（置换检验 + 多体系一致上调经验 p）
+    agent: omics
+    tools:
+      - ["../AI4OmicsAnalysis/examples/yap1_breast/negative_control.py", "--base", "{base}"]
+    expect: [results/negative_control.json]
+
+  - id: novelty
+    desc: PubMed 新颖性/功能评分
+    agent: novelty
+    expect: [results/novelty_scores.csv]
+    contract:
+      results/novelty_scores.csv: {columns: [gene, novelty, relevance, score]}
+    params:
+      genes_from: results/priority_triple_candidates.csv
+      gene_column: 基因
+      out: results/novelty_scores.csv
+
+  - id: plots
+    desc: 出图（规格见 examples/yap1_breast/docs/绘图提示词.md）
+    agent: plotting
+    expect: [figures/fig2_ip_resistance_quadrant.png]
